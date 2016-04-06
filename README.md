@@ -19,9 +19,11 @@ course_numbers = get_subject_data(subject_ids)
 get_courses(course_numbers)
 ```
 
-#####
 You'll also have to supply your own cookie. Go to the [new scheduler] (https://berkeley.collegescheduler.com/spa#courses/add), then open Chrome Developer Console (Ctrl+Shift+i), then go to 'Networks', then refresh the page. Click on of the requests under XHR and copy and paste that cookie into your script.
 
 This will generate a directory of courses and their individual infos/json files.
 
 'get_course_number_from_json' is included as an alternative for getting 'course_numbers' if the subjects jsons are already stored because there is no need to send redundant/useless requests to Berkeley's servers. ):
+
+Disclaimer:
+I have no clue what I'm doing :D
