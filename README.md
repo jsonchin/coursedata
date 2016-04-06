@@ -12,7 +12,7 @@ So you can get them yourself (however, it takes a long time and if you just want
 
 '''
 from coursedata import *
-cookie = '__RequestVerificationToken=INSERT_YOUR_COOKIE_HERE'
+cookie = "__RequestVerificationToken=INSERT_YOUR_COOKIE_HERE"
 set_cookie(cookie)
 subject_ids = get_subject_ids()
 course_numbers = get_subject_data(subject_ids)
