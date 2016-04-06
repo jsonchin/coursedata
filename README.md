@@ -1,14 +1,14 @@
 # CourseData
 
-## Data
-[Example Data for CS61C] (https://berkeley.collegescheduler.com/api/terms/2016%20Fall/subjects/COMPSCI/courses/61C/regblocks)
-You might have to be logged into your CalNet account.
+## Example Data
+[Example Data for CS61C] (https://berkeley.collegescheduler.com/api/terms/2016%20Fall/subjects/COMPSCI/courses/61C/regblocks).
+You might have to be logged into your CalNet account. Scroll down past 'registrationBlocks' to see the 'sections'.
 
 
 ## Usage
-All of the json files are already retrieved; however, updates to their schedules/courses will probably be made and these won't be reflected in my files.
+All of the json files have already been retrieved for you; however, updates to their schedules/courses will probably be made and these won't be reflected in my files.
 
-So you can get them yourself (however, it takes a long time and if you just want to look at the data just look at the files I already retrieved)!
+So you can get them yourself! (however, it takes a long time and if you just want to look at the data just look at the files I already retrieved - time delays between each request to prevent the request from being rejected)
 
 ```
 from coursedata import *

@@ -10,24 +10,12 @@ headers_d = {
 	'Accept-Encoding':'gzip, deflate, sdch',
 	'Accept-Language':'en-US,en;q=0.8',
 	'Connection':'keep-alive',
-	'Cookies':'__RequestVerificationToken=J2MBeJ4VGXKqRbz2x1KLuwQDfXA92BKQG43k4r3UhLfZlSNPN0rZWWh3r9rKWPIU0kmeVVaAWilAnwcbtK0myx28tDM1; .ASPXAUTH=BDA05B2E543E5E03761458124DB49A6E0EE50400C84AF4B2FCF3895202A60FB5081E240533F3B78A23BA29F6612354D8DCFE7628E55B8F6BDB65C40172B7ECEF4A4CE5EFCB36C07BC794BB2A11D9F7D8029566F46EEAE6398C4985E3136852165F6570467E7D7DFC262F8FB338BA6C520FEE919B',
 	'Cache-Control':'max-age=0',
 	'Host':'berkeley.collegescheduler.com',
 	'Referer':'https://berkeley.collegescheduler.com/spa',
 	'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
 	'X-Requested-With':'XMLHttpRequest'
 }
-
-
-"""
-if __name__ == '__main__':
-	if len(sys.argv) != 2:
-		raise ValueError('Needs a cookie!!!')
-	cookie = sys.argv[1]
-"""
-headers_d['Cookie'] = '__RequestVerificationToken=J2MBeJ4VGXKqRbz2x1KLuwQDfXA92BKQG43k4r3UhLfZlSNPN0rZWWh3r9rKWPIU0kmeVVaAWilAnwcbtK0myx28tDM1; .ASPXAUTH=BDA05B2E543E5E03761458124DB49A6E0EE50400C84AF4B2FCF3895202A60FB5081E240533F3B78A23BA29F6612354D8DCFE7628E55B8F6BDB65C40172B7ECEF4A4CE5EFCB36C07BC794BB2A11D9F7D8029566F46EEAE6398C4985E3136852165F6570467E7D7DFC262F8FB338BA6C520FEE919B'
-
-
 
 def get_subject_ids():
 	subjects_url = 'https://berkeley.collegescheduler.com/api/terms/2016%20Fall/subjects'
@@ -99,5 +87,7 @@ def set_cookie(cookie):
 	headers_d['Cookie'] = cookie
 
 if __name__ == '__main__':
+	cookie = '__RequestVerificationToken=J2MBeJ4VGXKqRbz2x1KLuwQDfXA92BKQG43k4r3UhLfZlSNPN0rZWWh3r9rKWPIU0kmeVVaAWilAnwcbtK0myx28tDM1; .ASPXAUTH=BDA05B2E543E5E03761458124DB49A6E0EE50400C84AF4B2FCF3895202A60FB5081E240533F3B78A23BA29F6612354D8DCFE7628E55B8F6BDB65C40172B7ECEF4A4CE5EFCB36C07BC794BB2A11D9F7D8029566F46EEAE6398C4985E3136852165F6570467E7D7DFC262F8FB338BA6C520FEE919B'
+	set_cookie(cookie)
 	course_numbers = get_course_number_from_json()
 	get_courses(course_numbers)
