@@ -1,4 +1,6 @@
 # CourseData
+This will generate a directory of courses and their individual infos/json files.
+
 
 ## Example Data
 [Example Data for CS61C] (https://berkeley.collegescheduler.com/api/terms/2016%20Fall/subjects/COMPSCI/courses/61C/regblocks).
@@ -21,7 +23,7 @@ get_courses(course_numbers)
 
 You'll also have to supply your own cookie. Go to the [new scheduler] (https://berkeley.collegescheduler.com/spa#courses/add), then open Chrome Developer Console (Ctrl+Shift+i), then go to 'Networks', then refresh the page. Click on of the requests under XHR and copy and paste that cookie into your script.
 
-This will generate a directory of courses and their individual infos/json files.
+Cookie's existence depends on whether or not you are logged in. Try not to get logged out/be inactive when running the script.
 
 'get_course_number_from_json' is included as an alternative for getting 'course_numbers' if the subjects jsons are already stored because there is no need to send redundant/useless requests to Berkeley's servers. ):
 

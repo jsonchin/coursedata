@@ -49,14 +49,20 @@ def get_subject_data(subject_ids):
 	return course_numbers
 
 def get_courses(course_numbers):
+	completed_ya = ['LGBT', 'FINNISH', 'MEDST', 'HEBREW', 'INDENG', 'UGIS', 'PLANTBI', 'PBHLTH', 'FILIPN', 'LINGUIS', 'BIOPHY', 'DEVENG', 'SANSKR', 'SCANDIN', 'PSYCH', 'SOCIOL', 'ITALIAN', 'BANGLA', 'ARABIC', 'BIOLOGY', 'PHYSED', 'GREEK', 'XMCELLB', 'XCOLWRI', 'MATSCI', 'SCMATHE', 'SEASIAN', 'ENVDES', 'ELENG', 'COGSCI', 'SSEASN', 'SEMITIC', 'NATAMST', 'XEPS', 'STAT', 'XRHETOR', 'COLWRIT', 'KOREAN', 'XESPM', 'PUNJABI', 'XCLASSI', 'COMLIT', 'JOURN', 'MCELLBI', 'DEVSTD', 'PHDBA', 'LATAMST', 'DEMOG', 'CRITTH', 'STS', 'KHMER', 'VISSCI', 'XENGLIS', 'EPS', 'FOLKLOR', 'EUST', 'ARMENI', 'MILAFF', 'NESTUD', 'CHEM', 'XHISTOR', 'POLISH', 'FRENCH', 'BOSCRSR', 'XMATH', 'NUSCTX', 'ASTRON', 'DUTCH', 'HISTART', 'SPANISH', 'UGBA', 'XPSYCH', 'INFO', 'XMUSIC', 'XGEOG', 'GPP', 'MEDIAST', 'PHYSICS', 'MBA', 'LANPRO', 'GMS', 'EGYPT', 'AEROSPC', 'INTEGBI', 'CHMENG', 'CZECH', 'NEUROSC', 'XFILM', 'NSE', 'PUBPOL', 'EWMBA', 'HISTORY', 'THAI', 'ANTHRO', 'OPTOM', 'ESPM', 'XPHILOS', 'XHISTAR', 'XASAMST', 'CMPBIO', 'LATIN', 'MATH', 'XSOCIOL', 'EECS', 'XETHSTD', 'YIDDISH', 'DANISH', 'ISF', 'LDARCH', 'SWEDISH', 'XLINGUI', 'AFRICAM', 'LEGALST', 'ASAMST', 'MONGOLN', 'ASIANST', 'CUNEIF', 'MILSCI', 'TAMIL', 'TURKISH', 'SASIAN', 'GERMAN', 'TELUGU', 'PERSIAN', 'TIBETAN', 'LS', 'VISSTD', 'MECENG', 'XLEGALS', 'XMESTU', 'GWS', 'NORWEGN', 'EALANG', 'POLECON', 'AST', 'XINTEGB', 'ECON', 'ARCH', 'EDUC', 'MALAYI', 'PACS', 'ENGIN', 'NUCENG', 'ENGLISH', 'CIVENG', 'THEATER', 'DEVP', 'MFE', 'PHILOS', 'COMPSCI', 'RUSSIAN', 'ENVECON', 'VIETNMS', 'NWMEDIA', 'RHETOR', 'SOCWEL', 'CHINESE', 'JEWISH', 'XSTAT', 'CATALAN', 'CYPLAN', 'NAVSCI', 'XGWS', 'BURMESE', 'CLASSIC', 'HUNGARI', 'BUDDSTD', 'CELTIC', 'FILM', 'COMPBIO', 'XPOLSCI', 'ART', 'AMERSTD', 'BIOENG', 'ARESEC', 'ENERES', 'MESTU', 'ICELAND', 'XASTRON', 'POLSCI', 'PORTUG', 'ETHSTD', 'CHICANO', 'JAPAN', 'NATRES', 'SLAVIC', 'GEOG']
+
+
+
 	for subject in course_numbers:
+		if subject in completed_ya:
+			continue
 		course_path = 'courses/{}/'.format(subject)
 		if not os.path.exists(course_path):
 			os.makedirs(course_path)
 
 		for course_number in course_numbers[subject]:
 			course_url = 'https://berkeley.collegescheduler.com/api/terms/2016%20Fall/subjects/{0}/courses/{1}/regblocks'.format(subject, course_number)
-			time.sleep(5)
+			time.sleep(3)
 			print(subject ,course_number)
 			while True:
 				try:
@@ -65,6 +71,9 @@ def get_courses(course_numbers):
 					if "message" in course_data:
 						raise IOError('Not authorized')		
 					break
+				except IOError as e:
+					print(e)
+					print('Not Authorized?')
 				except:
 					print('TOO MANY REQUESTS, GONNA GET BANNED')
 					time.sleep(60)
@@ -87,7 +96,7 @@ def set_cookie(cookie):
 	headers_d['Cookie'] = cookie
 
 if __name__ == '__main__':
-	cookie = '__RequestVerificationToken=J2MBeJ4VGXKqRbz2x1KLuwQDfXA92BKQG43k4r3UhLfZlSNPN0rZWWh3r9rKWPIU0kmeVVaAWilAnwcbtK0myx28tDM1; .ASPXAUTH=BDA05B2E543E5E03761458124DB49A6E0EE50400C84AF4B2FCF3895202A60FB5081E240533F3B78A23BA29F6612354D8DCFE7628E55B8F6BDB65C40172B7ECEF4A4CE5EFCB36C07BC794BB2A11D9F7D8029566F46EEAE6398C4985E3136852165F6570467E7D7DFC262F8FB338BA6C520FEE919B'
+	cookie = '__RequestVerificationToken=J2MBeJ4VGXKqRbz2x1KLuwQDfXA92BKQG43k4r3UhLfZlSNPN0rZWWh3r9rKWPIU0kmeVVaAWilAnwcbtK0myx28tDM1; .ASPXAUTH=438FFEC72E53A4879F86C412F3C43210D81D146EB943B05F17731EED9B9965D9737890237CC18057510A33E3F3EFBA410A70A8C80BC1BF34220BA29F94B1CFD0CEF36F990FCC4E555AAC8C99F6D641EB97868AD23C18DF92B64226173ABBA1A79DD26918DC155E43809742C001693E4C40F01AF5'
 	set_cookie(cookie)
 	course_numbers = get_course_number_from_json()
 	get_courses(course_numbers)
